@@ -1,0 +1,9 @@
+D:\0Work\HalfPintLaptopUploadService\HalfPintLaptopConsoleUpload\bin\Release\NLog.config
+D:\0Work\HalfPintLaptopUploadService\HalfPintLaptopConsoleUpload\bin\Release\HalfPintLaptopConsoleUpload.exe
+D:\0Work\HalfPintLaptopUploadService\HalfPintLaptopConsoleUpload\bin\Release\HalfPintLaptopConsoleUpload.pdb
+D:\0Work\HalfPintLaptopUploadService\HalfPintLaptopConsoleUpload\bin\Release\NLog.dll
+D:\0Work\HalfPintLaptopUploadService\HalfPintLaptopConsoleUpload\bin\Release\NLog.xml
+D:\0Work\HalfPintLaptopUploadService\HalfPintLaptopConsoleUpload\obj\x86\Release\HalfPintLaptopConsoleUpload.exe
+D:\0Work\HalfPintLaptopUploadService\HalfPintLaptopConsoleUpload\obj\x86\Release\HalfPintLaptopConsoleUpload.pdb
+D:\0Work\HalfPintLaptopUploadService\HalfPintLaptopConsoleUpload\bin\Release\HalfPintLaptopConsoleUpload.exe.config
+D:\0Work\HalfPintLaptopUploadService\HalfPintLaptopConsoleUpload\obj\x86\Release\HalfPintLaptopConsoleUpload.csprojResolveAssemblyReference.cache
