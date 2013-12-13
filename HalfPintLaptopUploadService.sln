@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HalfPintLaptopUploadService", "HalfPintLaptopUploadService\HalfPintLaptopUploadService.csproj", "{C53BA27E-5D3B-4812-BC8F-8F2F9DE9FB0F}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "HalfPintLaptopUploadServiceSetup", "HalfPintLaptopUploadServiceSetup\HalfPintLaptopUploadServiceSetup.vdproj", "{EA2C4BE5-3D79-43D2-B50B-F47DCE78EFCA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HalfPintLaptopConsoleUpload", "HalfPintLaptopConsoleUpload\HalfPintLaptopConsoleUpload.csproj", "{BBF99860-CD7D-4B3E-B76C-80E155AA72F0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C53BA27E-5D3B-4812-BC8F-8F2F9DE9FB0F}.Debug|x86.ActiveCfg = Debug|x86
+		{C53BA27E-5D3B-4812-BC8F-8F2F9DE9FB0F}.Debug|x86.Build.0 = Debug|x86
+		{C53BA27E-5D3B-4812-BC8F-8F2F9DE9FB0F}.Release|x86.ActiveCfg = Release|x86
+		{C53BA27E-5D3B-4812-BC8F-8F2F9DE9FB0F}.Release|x86.Build.0 = Release|x86
+		{EA2C4BE5-3D79-43D2-B50B-F47DCE78EFCA}.Debug|x86.ActiveCfg = Debug
+		{EA2C4BE5-3D79-43D2-B50B-F47DCE78EFCA}.Release|x86.ActiveCfg = Release
+		{BBF99860-CD7D-4B3E-B76C-80E155AA72F0}.Debug|x86.ActiveCfg = Debug|x86
+		{BBF99860-CD7D-4B3E-B76C-80E155AA72F0}.Debug|x86.Build.0 = Debug|x86
+		{BBF99860-CD7D-4B3E-B76C-80E155AA72F0}.Release|x86.ActiveCfg = Release|x86
+		{BBF99860-CD7D-4B3E-B76C-80E155AA72F0}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
