@@ -7,3 +7,10 @@ D:\0Work\HalfPintLaptopUploadService\HalfPintLaptopConsoleUpload\obj\x86\Release
 D:\0Work\HalfPintLaptopUploadService\HalfPintLaptopConsoleUpload\obj\x86\Release\HalfPintLaptopConsoleUpload.pdb
 D:\0Work\HalfPintLaptopUploadService\HalfPintLaptopConsoleUpload\bin\Release\HalfPintLaptopConsoleUpload.exe.config
 D:\0Work\HalfPintLaptopUploadService\HalfPintLaptopConsoleUpload\obj\x86\Release\HalfPintLaptopConsoleUpload.csprojResolveAssemblyReference.cache
+D:\0Work\HalfPintLaptopUploadService\HalfPintLaptopConsoleUpload\bin\Release\System.Net.Http.dll
+D:\0Work\HalfPintLaptopUploadService\HalfPintLaptopConsoleUpload\bin\Release\System.Net.Http.Formatting.dll
+D:\0Work\HalfPintLaptopUploadService\HalfPintLaptopConsoleUpload\bin\Release\System.Net.Http.WebRequest.dll
+D:\0Work\HalfPintLaptopUploadService\HalfPintLaptopConsoleUpload\bin\Release\Newtonsoft.Json.dll
+D:\0Work\HalfPintLaptopUploadService\HalfPintLaptopConsoleUpload\bin\Release\System.Net.Http.xml
+D:\0Work\HalfPintLaptopUploadService\HalfPintLaptopConsoleUpload\bin\Release\System.Net.Http.Formatting.xml
+D:\0Work\HalfPintLaptopUploadService\HalfPintLaptopConsoleUpload\bin\Release\System.Net.Http.WebRequest.xml

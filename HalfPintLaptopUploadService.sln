@@ -7,6 +7,8 @@ Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "HalfPintLaptopUploadService
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HalfPintLaptopConsoleUpload", "HalfPintLaptopConsoleUpload\HalfPintLaptopConsoleUpload.csproj", "{BBF99860-CD7D-4B3E-B76C-80E155AA72F0}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "HalfPintLaptopConsoleUploadSetup", "HalfPintLaptopConsoleUploadSetup\HalfPintLaptopConsoleUploadSetup.vdproj", "{54013D62-D676-4AF3-8090-2579D30F397B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -23,6 +25,8 @@ Global
 		{BBF99860-CD7D-4B3E-B76C-80E155AA72F0}.Debug|x86.Build.0 = Debug|x86
 		{BBF99860-CD7D-4B3E-B76C-80E155AA72F0}.Release|x86.ActiveCfg = Release|x86
 		{BBF99860-CD7D-4B3E-B76C-80E155AA72F0}.Release|x86.Build.0 = Release|x86
+		{54013D62-D676-4AF3-8090-2579D30F397B}.Debug|x86.ActiveCfg = Debug
+		{54013D62-D676-4AF3-8090-2579D30F397B}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
