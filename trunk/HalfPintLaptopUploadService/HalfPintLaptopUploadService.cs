@@ -16,7 +16,8 @@ namespace HalfPintLaptopUploadService
     {
         private Timer _timer;
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
-        
+        private string _logName;
+
         public HalfPintLaptopUploadService()
         {
             InitializeComponent();
@@ -44,15 +45,15 @@ namespace HalfPintLaptopUploadService
                 Directory.CreateDirectory(logFolder);
             }
 
-            string computerName = Environment.MachineName;
-            string logName = "uploadServiceLog_" + computerName + DateTime.Today.Month + "_" + DateTime.Today.Year + ".txt";
-            logName = Path.Combine(logFolder, logName);
-            
             //name the log file based on computer name, month and year
+            string computerName = Environment.MachineName;
+            _logName = "uploadServiceLog_" + computerName + DateTime.Today.Month + "_" + DateTime.Today.Year + ".txt";
+            _logName = Path.Combine(logFolder, _logName);
+            
             var fileTarget = LogManager.Configuration.AllTargets.First(t => t.Name == "logfile") as FileTarget;
             if (fileTarget != null)
             {
-                fileTarget.FileName = logName;
+                fileTarget.FileName = _logName;
                 
             }
 
@@ -68,10 +69,11 @@ namespace HalfPintLaptopUploadService
                 if (!string.IsNullOrEmpty(siteCode))
                 {
                     DoNovanetUploads(siteCode, computerName);
+                    DoLogUpload(siteCode, computerName);
                 }
             }
 
-            DoLogUpload(siteCode, computerName);
+            
         }
         
         private string DoChecksUploads()
@@ -122,7 +124,7 @@ namespace HalfPintLaptopUploadService
                 return siteCode;
             }
 
-            //arcive them first
+            //arcive the old ones first
             fis = di.GetFiles();
             foreach (var fi in fis)
             {
@@ -228,44 +230,6 @@ namespace HalfPintLaptopUploadService
             }
         }
 
-        private void DoLogUpload(string siteCode, string computerName)
-        {
-            Logger.Info("Starting log upload service");
-
-            //create the archive directory if it doesn't exits
-            string logsArchivesPath = ConfigurationManager.AppSettings["LogsArchivesPath"];
-            if (!Directory.Exists(logsArchivesPath))
-            {
-                Directory.CreateDirectory(logsArchivesPath);
-                Logger.Info("Created the logs archive folder");
-            }
-
-            //check for any files to be archived
-            //get the pervious month and year
-            var dtPrevious = DateTime.Today.AddMonths(-1);
-            var previous = dtPrevious.Month.ToString() + "_" + dtPrevious.Year;
-            
-            string logFolder = ConfigurationManager.AppSettings["LogPath"];
-            var di = new DirectoryInfo(logFolder);
-            FileInfo[] fis = di.GetFiles();
-            foreach (var fi in fis)
-            {
-                if (fi.Name.Contains(previous))
-                {
-                    //archive this file
-                    fi.CopyTo(Path.Combine(logsArchivesPath, fi.Name), true);
-                    Logger.Info("Archived file: " + fi.Name);
-                    fi.Delete();
-                }
-                else //upload
-                {
-                    UploadLogFile(fi.FullName, siteCode, computerName, fi.Name);
-                }
-            }
-
-
-        }
-        
         private void UploadNovaNetFile(string fullName, string siteCode, string computerName, string fileName)
         {
             Logger.Info("Upload NovaNet File: " + fileName);
@@ -290,6 +254,39 @@ namespace HalfPintLaptopUploadService
             }
         }
 
+        private void DoLogUpload(string siteCode, string computerName)
+        {
+            Logger.Info("Starting log upload service");
+
+            //create the archive directory if it doesn't exits
+            string logsArchivesPath = ConfigurationManager.AppSettings["LogsArchivesPath"];
+            if (!Directory.Exists(logsArchivesPath))
+            {
+                Directory.CreateDirectory(logsArchivesPath);
+                Logger.Info("Created the logs archive folder");
+            }
+
+            //check for any files to be archived
+            
+            string logFolder = ConfigurationManager.AppSettings["LogPath"];
+            var di = new DirectoryInfo(logFolder);
+            FileInfo[] fis = di.GetFiles();
+            foreach (var fi in fis)
+            {
+                if (fi.Name != _logName)
+                {
+                    //archive this file
+                    fi.CopyTo(Path.Combine(logsArchivesPath, fi.Name), true);
+                    Logger.Info("Archived file: " + fi.Name);
+                    fi.Delete();
+                }
+                else //upload
+                {
+                    UploadLogFile(fi.FullName, siteCode, computerName, fi.Name);
+                }
+            }
+        }
+        
         private void UploadLogFile(string fullName, string siteCode, string computerName, string fileName)
         {
             Logger.Info("Upload Log File: " + fileName);
@@ -313,6 +310,7 @@ namespace HalfPintLaptopUploadService
 
             }
         }
+        
         protected override void OnStop()
         {
             Logger.Info("HalfPintLaptopUploadService stop");
