@@ -9,7 +9,7 @@
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>HalfPintLaptopConsoleUpload</RootNamespace>
-    <AssemblyName>HalfPintLaptopConsoleUpload</AssemblyName>
+    <AssemblyName>HalfpintUploadConsole</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>

@@ -25,7 +25,7 @@ namespace HalfPintLaptopConsoleUpload
             }
 
             string computerName = Environment.MachineName;
-            _logName = "uploadConsoleLog_" + computerName + DateTime.Today.Month + "_" + DateTime.Today.Year + ".txt";
+            _logName = "uploadConsoleLog_" + computerName + "_" + DateTime.Today.Month + "_" + DateTime.Today.Year + ".txt";
             _logName = Path.Combine(logFolder, _logName);
 
             var fileTarget = LogManager.Configuration.AllTargets.First(t => t.Name == "logfile") as FileTarget;
@@ -37,8 +37,8 @@ namespace HalfPintLaptopConsoleUpload
             if (args.Length > 0)
             {
                 arg = args[0];
-                Console.WriteLine("Running with argument:" + arg);
-                Logger.Info("Console:running with argument" + arg );
+                Console.WriteLine("Running with argument: " + arg);
+                Logger.Info("Console:running with argument: " + arg );
             }
 
             string siteCode = DoChecksUploads();
@@ -53,6 +53,7 @@ namespace HalfPintLaptopConsoleUpload
                 
             }
             DoLogUpload(siteCode, computerName);
+            Logger.Info("Console:done");
         }
 
         private static string DoChecksUploads()
@@ -61,12 +62,12 @@ namespace HalfPintLaptopConsoleUpload
 
             //we need the siteCode for the novanet upload
             string siteCode = string.Empty;
-
+            
             string checksFolder = ConfigurationManager.AppSettings["ChecksPath"];
             var di = new DirectoryInfo(checksFolder);
             if (!di.Exists)
             {
-                //this should get created by the CHECKS application
+                //this should get created by either the CHECKS application or by this program for the logs
                 //if it doesn't exist then there is no work to do so just exit
                 Logger.Info("Console:The Halfpint folder does not exist");
                 return siteCode;
@@ -77,7 +78,7 @@ namespace HalfPintLaptopConsoleUpload
             if (!Directory.Exists(archiveFolder))
             {
                 Directory.CreateDirectory(archiveFolder);
-                Logger.Info("Console:Created the HalfPintArchive folder");
+                Logger.Info("Console:Created the HalfPintArchive folder: " + archiveFolder);
             }
 
             //archive old files from the halfpint folder (files with last modified older than 7 days)
@@ -252,7 +253,7 @@ namespace HalfPintLaptopConsoleUpload
             FileInfo[] fis = di.GetFiles();
             foreach (var fi in fis)
             {
-                if (fi.Name != _logName)
+                if (fi.FullName != _logName)
                 {
                     //archive this file
                     fi.CopyTo(Path.Combine(logsArchivesPath, fi.Name), true);
