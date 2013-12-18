@@ -47,7 +47,7 @@ namespace HalfPintLaptopUploadService
 
             //name the log file based on computer name, month and year
             string computerName = Environment.MachineName;
-            _logName = "uploadServiceLog_" + computerName + DateTime.Today.Month + "_" + DateTime.Today.Year + ".txt";
+            _logName = "uploadServiceLog_" + computerName + "_" + DateTime.Today.Month + "_" + DateTime.Today.Year + ".txt";
             _logName = Path.Combine(logFolder, _logName);
             
             var fileTarget = LogManager.Configuration.AllTargets.First(t => t.Name == "logfile") as FileTarget;
@@ -86,7 +86,7 @@ namespace HalfPintLaptopUploadService
             var di = new DirectoryInfo(checksFolder);
             if (!di.Exists)
             {
-                //this should get created by the CHECKS application
+                //this should get created by either the CHECKS application or by this program for the logs
                 //if it doesn't exist then there is no work to do so just exit
                 Logger.Info("The Halfpint folder does not exist");
                 return siteCode;
@@ -97,7 +97,7 @@ namespace HalfPintLaptopUploadService
             if (!Directory.Exists(archiveFolder))
             {
                 Directory.CreateDirectory(archiveFolder);
-                Logger.Info("Created the HalfPintArchive folder");
+                Logger.Info("Created the HalfPintArchive folder: " + archiveFolder);
             }
 
             //archive old files from the halfpint folder (files with last modified older than 7 days)

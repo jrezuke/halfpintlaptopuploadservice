@@ -1,11 +1,6 @@
 D:\0Work\HalfPintLaptopUploadService\HalfPintLaptopConsoleUpload\bin\Release\NLog.config
-D:\0Work\HalfPintLaptopUploadService\HalfPintLaptopConsoleUpload\bin\Release\HalfPintLaptopConsoleUpload.exe
-D:\0Work\HalfPintLaptopUploadService\HalfPintLaptopConsoleUpload\bin\Release\HalfPintLaptopConsoleUpload.pdb
 D:\0Work\HalfPintLaptopUploadService\HalfPintLaptopConsoleUpload\bin\Release\NLog.dll
 D:\0Work\HalfPintLaptopUploadService\HalfPintLaptopConsoleUpload\bin\Release\NLog.xml
-D:\0Work\HalfPintLaptopUploadService\HalfPintLaptopConsoleUpload\obj\x86\Release\HalfPintLaptopConsoleUpload.exe
-D:\0Work\HalfPintLaptopUploadService\HalfPintLaptopConsoleUpload\obj\x86\Release\HalfPintLaptopConsoleUpload.pdb
-D:\0Work\HalfPintLaptopUploadService\HalfPintLaptopConsoleUpload\bin\Release\HalfPintLaptopConsoleUpload.exe.config
 D:\0Work\HalfPintLaptopUploadService\HalfPintLaptopConsoleUpload\obj\x86\Release\HalfPintLaptopConsoleUpload.csprojResolveAssemblyReference.cache
 D:\0Work\HalfPintLaptopUploadService\HalfPintLaptopConsoleUpload\bin\Release\System.Net.Http.dll
 D:\0Work\HalfPintLaptopUploadService\HalfPintLaptopConsoleUpload\bin\Release\System.Net.Http.Formatting.dll
@@ -14,3 +9,8 @@ D:\0Work\HalfPintLaptopUploadService\HalfPintLaptopConsoleUpload\bin\Release\New
 D:\0Work\HalfPintLaptopUploadService\HalfPintLaptopConsoleUpload\bin\Release\System.Net.Http.xml
 D:\0Work\HalfPintLaptopUploadService\HalfPintLaptopConsoleUpload\bin\Release\System.Net.Http.Formatting.xml
 D:\0Work\HalfPintLaptopUploadService\HalfPintLaptopConsoleUpload\bin\Release\System.Net.Http.WebRequest.xml
+D:\0Work\HalfPintLaptopUploadService\HalfPintLaptopConsoleUpload\bin\Release\HalfpintUploadConsole.exe.config
+D:\0Work\HalfPintLaptopUploadService\HalfPintLaptopConsoleUpload\bin\Release\HalfpintUploadConsole.exe
+D:\0Work\HalfPintLaptopUploadService\HalfPintLaptopConsoleUpload\bin\Release\HalfpintUploadConsole.pdb
+D:\0Work\HalfPintLaptopUploadService\HalfPintLaptopConsoleUpload\obj\x86\Release\HalfpintUploadConsole.exe
+D:\0Work\HalfPintLaptopUploadService\HalfPintLaptopConsoleUpload\obj\x86\Release\HalfpintUploadConsole.pdb
