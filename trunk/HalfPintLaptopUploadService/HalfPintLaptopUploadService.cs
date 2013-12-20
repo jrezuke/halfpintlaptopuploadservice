@@ -72,7 +72,6 @@ namespace HalfPintLaptopUploadService
                     DoLogUpload(siteCode, computerName);
                 }
             }
-
             
         }
         
@@ -131,7 +130,8 @@ namespace HalfPintLaptopUploadService
                 //if the file is older than 1 week then archive
                 if (fi.LastWriteTime.CompareTo(DateTime.Today.AddDays(-7)) < 0)
                 {
-                    fi.MoveTo(Path.Combine(archiveFolder, fi.Name));
+                    fi.CopyTo(Path.Combine(archiveFolder, fi.Name), true);
+                    fi.Delete();
                     Logger.Info("Archived file: " + fi.Name);
                 }
 
@@ -191,9 +191,9 @@ namespace HalfPintLaptopUploadService
                 var filestream = File.Open(fullName, FileMode.Open);
                 content.Add(new StreamContent(filestream), "file", fileName);
 
-                //var requestUri = "https://halfpintstudy.org/hpUpload/api/upload?" + queryString;
+                var requestUri = "https://halfpintstudy.org/hpUpload/api/upload?" + queryString;
                 //var requestUri = "http://asus1/hpuploadapi/api/upload?" + queryString;
-                var requestUri = "http://joelaptop4/hpuploadapi/api/upload?" + queryString;
+                //var requestUri = "http://joelaptop4/hpuploadapi/api/upload?" + queryString;
                 var result = client.PostAsync(requestUri, content).Result;
             }
         }
@@ -246,9 +246,9 @@ namespace HalfPintLaptopUploadService
                 var filestream = File.Open(fullName, FileMode.Open);
                 content.Add(new StreamContent(filestream), "file", fileName);
 
-                //var requestUri = "https://halfpintstudy.org/hpUpload/api/NovanetUpload?" + queryString;
+                var requestUri = "https://halfpintstudy.org/hpUpload/api/NovanetUpload?" + queryString;
                 //var requestUri = "http://asus1/hpuploadapi/api/NovanetUpload?" + queryString;
-                var requestUri = "http://joelaptop4/hpuploadapi/api/NovanetUpload?" + queryString;
+                //var requestUri = "http://joelaptop4/hpuploadapi/api/NovanetUpload?" + queryString;
                 var result = client.PostAsync(requestUri, content).Result;
 
             }
@@ -273,16 +273,13 @@ namespace HalfPintLaptopUploadService
             FileInfo[] fis = di.GetFiles();
             foreach (var fi in fis)
             {
+                UploadLogFile(fi.FullName, siteCode, computerName, fi.Name);
                 if (fi.Name != _logName)
                 {
                     //archive this file
                     fi.CopyTo(Path.Combine(logsArchivesPath, fi.Name), true);
                     Logger.Info("Archived file: " + fi.Name);
                     fi.Delete();
-                }
-                else //upload
-                {
-                    UploadLogFile(fi.FullName, siteCode, computerName, fi.Name);
                 }
             }
         }
@@ -303,9 +300,9 @@ namespace HalfPintLaptopUploadService
                 var filestream = File.Open(fullName, FileMode.Open);
                 content.Add(new StreamContent(filestream), "file", fileName);
 
-                //var requestUri = "https://halfpintstudy.org/hpUpload/api/LogUpload?" + queryString;
+                var requestUri = "https://halfpintstudy.org/hpUpload/api/LogUpload?" + queryString;
                 //var requestUri = "http://asus1/hpuploadapi/api/LogUpload?" + queryString;
-                var requestUri = "http://joelaptop4/hpuploadapi/api/LogUpload?" + queryString;
+                //var requestUri = "http://joelaptop4/hpuploadapi/api/LogUpload?" + queryString;
                 var result = client.PostAsync(requestUri, content).Result;
 
             }
