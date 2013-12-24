@@ -13,7 +13,9 @@ namespace HalfPintLaptopConsoleUpload
     class Program
     {
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
-        private static string _logName;
+        private static string _logNameConsole;
+        private static string _logNameService;
+        
 
         static void Main(string[] args)
         {
@@ -25,11 +27,13 @@ namespace HalfPintLaptopConsoleUpload
             }
 
             string computerName = Environment.MachineName;
-            _logName = "uploadConsoleLog_" + computerName + "_" + DateTime.Today.Month + "_" + DateTime.Today.Year + ".txt";
-            _logName = Path.Combine(logFolder, _logName);
+            _logNameConsole = "uploadConsoleLog_" + computerName + "_" + DateTime.Today.Month + "_" + DateTime.Today.Year + ".txt";
+            _logNameConsole = Path.Combine(logFolder, _logNameConsole);
+            _logNameService = "uploadServiceLog_" + computerName + "_" + DateTime.Today.Month + "_" + DateTime.Today.Year + ".txt";
+            _logNameService = Path.Combine(logFolder, _logNameService);
 
             var fileTarget = LogManager.Configuration.AllTargets.First(t => t.Name == "logfile") as FileTarget;
-            if (fileTarget != null) fileTarget.FileName = _logName;
+            if (fileTarget != null) fileTarget.FileName = _logNameConsole;
 
             Logger.Info("Starting checks upload console");
 
@@ -255,7 +259,7 @@ namespace HalfPintLaptopConsoleUpload
             foreach (var fi in fis)
             {
                 UploadLogFile(fi.FullName, siteCode, computerName, fi.Name);
-                if (fi.FullName != _logName)
+                if (!(fi.FullName == _logNameService || fi.Name == _logNameConsole))
                 {
                     //archive this file
                     fi.CopyTo(Path.Combine(logsArchivesPath, fi.Name), true);
