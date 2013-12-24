@@ -16,7 +16,8 @@ namespace HalfPintLaptopUploadService
     {
         private Timer _timer;
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
-        private string _logName;
+        private string _logNameService;
+        private static string _logNameConsole;
 
         public HalfPintLaptopUploadService()
         {
@@ -47,13 +48,15 @@ namespace HalfPintLaptopUploadService
 
             //name the log file based on computer name, month and year
             string computerName = Environment.MachineName;
-            _logName = "uploadServiceLog_" + computerName + "_" + DateTime.Today.Month + "_" + DateTime.Today.Year + ".txt";
-            _logName = Path.Combine(logFolder, _logName);
+            _logNameService = "uploadServiceLog_" + computerName + "_" + DateTime.Today.Month + "_" + DateTime.Today.Year + ".txt";
+            _logNameService = Path.Combine(logFolder, _logNameService);
+            _logNameConsole = "uploadConsoleLog_" + computerName + "_" + DateTime.Today.Month + "_" + DateTime.Today.Year + ".txt";
+            _logNameConsole = Path.Combine(logFolder, _logNameConsole);
             
             var fileTarget = LogManager.Configuration.AllTargets.First(t => t.Name == "logfile") as FileTarget;
             if (fileTarget != null)
             {
-                fileTarget.FileName = _logName;
+                fileTarget.FileName = _logNameService;
                 
             }
 
@@ -274,7 +277,7 @@ namespace HalfPintLaptopUploadService
             foreach (var fi in fis)
             {
                 UploadLogFile(fi.FullName, siteCode, computerName, fi.Name);
-                if (fi.Name != _logName)
+                if (!(fi.FullName == _logNameService || fi.Name == _logNameConsole))
                 {
                     //archive this file
                     fi.CopyTo(Path.Combine(logsArchivesPath, fi.Name), true);
