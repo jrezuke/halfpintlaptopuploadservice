@@ -171,15 +171,19 @@ namespace HalfPintLaptopConsoleUpload
             qsCollection["fileName"] = fileName;
             var queryString = qsCollection.ToString();
             using (var client = new HttpClient())
-            using (var content = new MultipartFormDataContent())
             {
-                var filestream = File.Open(fullName, FileMode.Open);
-                content.Add(new StreamContent(filestream), "file", fileName);
+                using (var content = new MultipartFormDataContent())
+                {
+                    var filestream = File.Open(fullName, FileMode.Open);
+                    content.Add(new StreamContent(filestream), "file", fileName);
 
-                var requestUri = "https://halfpintstudy.org/hpUpload/api/upload?" + queryString;
-                //var requestUri = "http://asus1/hpuploadapi/api/upload?" + queryString;
-                //var requestUri = "http://joelaptop4/hpuploadapi/api/upload?" + queryString;
-                var result = client.PostAsync(requestUri, content).Result;
+                    var requestUri = "https://halfpintstudy.org/hpUpload/api/upload?" + queryString;
+                    //var requestUri = "http://asus1/hpuploadapi/api/upload?" + queryString;
+                    //var requestUri = "http://joelaptop4/hpuploadapi/api/upload?" + queryString;
+                    client.Timeout = TimeSpan.FromMinutes(10);
+                    var result = client.PostAsync(requestUri, content).Result;
+                    filestream.Close();
+                }
             }
         }
 
@@ -225,17 +229,19 @@ namespace HalfPintLaptopConsoleUpload
             qsCollection["fileName"] = fileName;
             var queryString = qsCollection.ToString();
 
-            var client = new HttpClient();
-            using (var content = new MultipartFormDataContent())
+            using (var client = new HttpClient())
             {
-                var filestream = File.Open(fullName, FileMode.Open);
-                content.Add(new StreamContent(filestream), "file", fileName);
+                using (var content = new MultipartFormDataContent())
+                {
+                    var filestream = File.Open(fullName, FileMode.Open);
+                    content.Add(new StreamContent(filestream), "file", fileName);
 
-                var requestUri = "https://halfpintstudy.org/hpUpload/api/NovanetUpload?" + queryString;
-                //var requestUri = "http://asus1/hpuploadapi/api/NovanetUpload?" + queryString;
-                //var requestUri = "http://joelaptop4/hpuploadapi/api/NovanetUpload?" + queryString;
-                var result = client.PostAsync(requestUri, content).Result;
-
+                    var requestUri = "https://halfpintstudy.org/hpUpload/api/NovanetUpload?" + queryString;
+                    //var requestUri = "http://asus1/hpuploadapi/api/NovanetUpload?" + queryString;
+                    //var requestUri = "http://joelaptop4/hpuploadapi/api/NovanetUpload?" + queryString;
+                    var result = client.PostAsync(requestUri, content).Result;
+                    filestream.Close();
+                }
             }
         }
 
@@ -279,17 +285,19 @@ namespace HalfPintLaptopConsoleUpload
             qsCollection["fileName"] = fileName;
             var queryString = qsCollection.ToString();
 
-            var client = new HttpClient();
-            using (var content = new MultipartFormDataContent())
+            using (var client = new HttpClient())
             {
-                var filestream = File.Open(fullName, FileMode.Open);
-                content.Add(new StreamContent(filestream), "file", fileName);
+                using (var content = new MultipartFormDataContent())
+                {
+                    var filestream = File.Open(fullName, FileMode.Open);
+                    content.Add(new StreamContent(filestream), "file", fileName);
 
-                var requestUri = "https://halfpintstudy.org/hpUpload/api/LogUpload?" + queryString;
-                //var requestUri = "http://asus1/hpuploadapi/api/LogUpload?" + queryString;
-                //var requestUri = "http://joelaptop4/hpuploadapi/api/LogUpload?" + queryString;
-                var result = client.PostAsync(requestUri, content).Result;
-
+                    var requestUri = "https://halfpintstudy.org/hpUpload/api/LogUpload?" + queryString;
+                    //var requestUri = "http://asus1/hpuploadapi/api/LogUpload?" + queryString;
+                    //var requestUri = "http://joelaptop4/hpuploadapi/api/LogUpload?" + queryString;
+                    var result = client.PostAsync(requestUri, content).Result;
+                    filestream.Close();
+                }
             }
         }
         
